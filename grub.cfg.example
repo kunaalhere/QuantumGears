@@ -1,0 +1,28 @@
+# ===================================================================
+# Example GRUB configuration snippet for loading the Quantum Gear theme
+# Add to your /boot/grub/grub.cfg or /etc/grub.d/ custom file
+# ===================================================================
+
+# Set the theme (adjust path to your installation location)
+set theme=(hd0,gpt1)/boot/grub/themes/quantum-gear-grub-theme/theme.txt
+
+# Timeout in seconds (the progress bar will reflect this)
+set timeout=30
+set timeout_style=menu
+
+# Pre‑load fonts (optional, but recommended for early menu text)
+loadfont (hd0,gpt1)/boot/grub/themes/quantum-gear-grub-theme/fonts/Orbitron-Bold.pf2
+loadfont (hd0,gpt1)/boot/grub/themes/quantum-gear-grub-theme/fonts/JetBrainsMono-Regular.pf2
+
+# Example menu entries – the theme styles them automatically
+menuentry "QuantumOS 12.0 (Superposition)" --class quantum {
+    linux /vmlinuz-linux root=/dev/qda2
+    initrd /initramfs-linux.img
+}
+
+menuentry "Schrödinger's Linux 7.1" --class schrodinger {
+    linux /vmlinuz-linux root=/dev/sda1
+    initrd /initramfs-linux.img
+}
+
+# ... add your own entries
